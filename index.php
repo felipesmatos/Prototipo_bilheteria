@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilheteria - Jogos de Futebol</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Escolha seu Jogo</h1>
+            <div class="columns is-multiline is-centered">
+                <!-- Jogo 1 -->
+                <div class="column is-4">
+                    <div class="box">
+                        <figure class="image is-4by3">
+                            <img src="https://s3-assets.bilheteriadigital.com/eventos/61668a.png?1737643085000" alt="Vasco x Fluminense">
+                        </figure>
+                        <div class="content has-text-centered mt-3">
+                            <p class="has-text-weight-bold">05 fev</p>
+                            <p class="is-size-5">CAMPEONATO CARIOCA 2025 | VASCO X FLUMINENSE</p>
+                            <p>Brasília - DF</p>
+                            <p>ARENA BRB - MANÉ GARRINCHA</p>
+                            <a href="compra.html?jogo=1" class="button is-primary mt-3">Comprar Ingresso</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jogo 2 -->
+                <div class="column is-4">
+                    <div class="box">
+                        <figure class="image is-4by3">
+                            <img src="https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2024/04/06/1061575171-palmeiras-1.jpg" alt="Palmeiras x Santos">
+                        </figure>
+                        <div class="content has-text-centered mt-3">
+                            <p class="has-text-weight-bold">12 fev</p>
+                            <p class="is-size-5">CAMPEONATO PAULISTA 2025 | PALMEIRAS X SANTOS</p>
+                            <p>São Paulo - SP</p>
+                            <p>ALLIANZ PARQUE</p>
+                            <a href="compra.html?jogo=2" class="button is-primary mt-3">Comprar Ingresso</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jogo 3 -->
+                <div class="column is-4">
+                    <div class="box">
+                        <figure class="image is-4by3">
+                            <img src="https://imagedelivery.net/vH8VihwEVpCdzSn_gaTmig/images/2024/06/maxresdefaultjpg-1718199654.jpg/w=730,compression=fast" alt="Grêmio x Internacional">
+                        </figure>
+                        <div class="content has-text-centered mt-3">
+                            <p class="has-text-weight-bold">19 fev</p>
+                            <p class="is-size-5">CAMPEONATO GAÚCHO 2025 | GRÊMIO X INTERNACIONAL</p>
+                            <p>Porto Alegre - RS</p>
+                            <p>ARENA DO GRÊMIO</p>
+                            <a href="compra.html?jogo=3" class="button is-primary mt-3">Comprar Ingresso</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

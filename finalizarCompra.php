@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+
+<body>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Finalizar Compra</h1>
+
+            <!-- Resumo do Pedido -->
+            <div class="box">
+                <h2 class="subtitle">Resumo do Pedido</h2>
+                <p id="resumo-jogo">Jogo: </p>
+                <p id="resumo-data">Data: </p>
+                <p id="resumo-local">Local: </p>
+                <p id="resumo-total">Total: R$ 0.00</p>
+            </div>
+
+            <!-- Informações Pessoais -->
+            <div class="box">
+                <h2 class="subtitle">Informações Pessoais</h2>
+                <p id="resumo-nome">Nome: </p>
+                <p id="resumo-email">E-mail: </p>
+            </div>
+
+            <!-- Opções de Pagamento -->
+            <div class="box">
+                <h2 class="subtitle">Opções de Pagamento</h2>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="pagamento" value="cartao" checked>
+                            Cartão de Crédito
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="pagamento" value="boleto">
+                            Boleto Bancário
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="pagamento" value="pix">
+                            PIX
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário para Finalizar Compra -->
+            <form id="finalizar-form" action="confirmacao.php" method="GET">
+                <!-- Campos Hidden para Passar os Dados -->
+                <input type="hidden" id="jogo" name="jogo" value="">
+                <input type="hidden" id="total" name="precoTotal" value="">
+                <input type="hidden" id="nome" name="nome" value="">
+                <input type="hidden" id="email" name="email" value="">
+                <input type="hidden" id="data" name="dataJogo" value="">
+                <input type="hidden" id="local" name="localJogo" value="">
+
+                <div class="field has-text-centered">
+                    <button type="submit" class="button is-primary is-large">Finalizar Compra</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Obtém os dados da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const jogo = urlParams.get('jogo');
+        const total = urlParams.get('precoTotal');
+        const nome = urlParams.get('nome');
+        const email = urlParams.get('email');
+        const data = urlParams.get('dataJogo');
+        const local = urlParams.get('localJogo');
+
+        // Atualiza os dados na página
+        document.getElementById('resumo-jogo').textContent = `Jogo: ${jogo}`;
+        document.getElementById('resumo-data').textContent = `Data: ${data}`;
+        document.getElementById('resumo-local').textContent = `Local: ${local}`;
+        document.getElementById('resumo-total').textContent = `Total: R$ ${total}`;
+
+        document.getElementById('resumo-nome').textContent = `Nome: ${nome}`;
+        document.getElementById('resumo-email').textContent = `E-mail: ${email}`;
+
+        // Preenche os campos hidden com os dados para envio
+        document.getElementById('jogo').value = jogo;
+        document.getElementById('total').value = total;
+        document.getElementById('nome').value = nome;
+        document.getElementById('email').value = email;
+        document.getElementById('data').value = data;
+        document.getElementById('local').value = local;
+    </script>
+</body>
+
+</html>

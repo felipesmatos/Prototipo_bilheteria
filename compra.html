@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Ingressos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Compra de Ingressos</h1>
+
+            <!-- Informações do jogo -->
+            <div class="box">
+                <h2 class="subtitle" id="jogo-title">Jogo Selecionado</h2>
+                <p id="jogo-data">Data: </p>
+                <p id="jogo-local">Local: </p>
+                <p id="jogo-preco">Preço por ingresso: R$ <span id="preco-unitario">0.00</span></p>
+            </div>
+
+            <!-- Formulário de compra -->
+            <form action="identificacao.php" method="GET">
+                <!-- Campo oculto para enviar o título do jogo -->
+                <input type="hidden" id="jogo" name="jogo">
+
+                <!-- Campo oculto para enviar o preço total -->
+                <input type="hidden" id="precoTotal" name="precoTotal">
+
+                <!-- Campo oculto para enviar a data do jogo -->
+                <input type="hidden" id="dataJogo" name="dataJogo">
+
+                <!-- Campo oculto para enviar o local do jogo -->
+                <input type="hidden" id="localJogo" name="localJogo">
+
+
+                <div class="field">
+                    <label class="label">Quantidade de Ingressos</label>
+                    <div class="control">
+                        <input type="number" id="quantidade" name="quantidade" class="input" min="1" value="1" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Total</label>
+                    <div class="control">
+                        <input type="text" id="total" class="input" value="R$ 0.00" readonly>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nome Completo</label>
+                    <div class="control">
+                        <input type="text" name="nome" id="nome" class="input" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <button type="submit" class="button is-primary">Confirmar Compra</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Obtém o parâmetro "jogo" da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const jogoId = urlParams.get('jogo');
+
+        // Dados dos jogos
+        const jogos = {
+            1: {
+                title: "CAMPEONATO CARIOCA 2025 | VASCO X FLUMINENSE",
+                data: "05 de fevereiro de 2025",
+                local: "ARENA BRB - MANÉ GARRINCHA, Brasília - DF",
+                preco: 50.00
+            },
+            2: {
+                title: "CAMPEONATO PAULISTA 2025 | PALMEIRAS X SANTOS",
+                data: "12 de fevereiro de 2025",
+                local: "ALLIANZ PARQUE, São Paulo - SP",
+                preco: 75.00
+            },
+            3: {
+                title: "CAMPEONATO GAÚCHO 2025 | GRÊMIO X INTERNACIONAL",
+                data: "19 de fevereiro de 2025",
+                local: "ARENA DO GRÊMIO, Porto Alegre - RS",
+                preco: 60.00
+            }
+        };
+
+        // Atualiza as informações na página
+        if (jogos[jogoId]) {
+            const jogo = jogos[jogoId];
+            document.getElementById('jogo-title').textContent = jogo.title;
+            document.getElementById('jogo-data').textContent = `Data: ${jogo.data}`;
+            document.getElementById('jogo-local').textContent = `Local: ${jogo.local}`;
+            document.getElementById('preco-unitario').textContent = jogo.preco.toFixed(2);
+
+            // Atualiza o total dinâmico
+            const quantidadeInput = document.getElementById('quantidade');
+            const totalInput = document.getElementById('total');
+
+            const atualizarTotal = () => {
+                const quantidade = parseInt(quantidadeInput.value, 10) || 1;
+                const total = quantidade * jogo.preco;
+                totalInput.value = `R$ ${total.toFixed(2)}`;
+
+                // Atualiza os campos ocultos
+                document.getElementById('jogo').value = jogo.title;
+                document.getElementById('dataJogo').value = jogo.data;
+                document.getElementById('localJogo').value = jogo.local;
+                document.getElementById('precoTotal').value = total.toFixed(2);
+            };
+
+            quantidadeInput.addEventListener('input', atualizarTotal);
+            atualizarTotal(); // Atualiza inicialmente
+        } else {
+            document.querySelector('.container').innerHTML = '<h2 class="title has-text-centered">Jogo não encontrado</h2>';
+        }
+    </script>
+</body>
+</html>

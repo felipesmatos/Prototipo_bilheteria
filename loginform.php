@@ -1,0 +1,51 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style="background-color: black;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <style>
+        .button {
+            
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: darkblue;            
+        }
+    </style>
+
+</head>
+
+<body style="display: flex; justify-content:center; align-items:center; height: 100vh;">
+    <?php
+    $_SESSION["usuario"] = "Ana";
+    $_SESSION["senha"] = "Ana123";
+    ?>
+
+    <div class="box" style="min-height:60%; min-width:50vh; max-height:70%; max-width:50vh">
+        <h1 class="title is-size-3 has-text-weight-semibold has-text-centered mt-5">Login</h1>
+        <div style="padding-left:25px ; padding-right:25px">
+            <form action="principal.php" method="POST">
+                <p style="color: gray;">Digite os seus dados de acesso.</p><br>
+                <label class=" label has-text-weight-semibold" for="idusuario">Usuário</label>
+                <input class="input" type="text" name="usuario" id="idusuario" placeholder="Digite seu usuário"> <br><br>
+                <label class=" label has-text-weight-semibold" for="idsenha">Senha</label>
+                <input class="input" type="password" name="senha" id="idsenha" placeholder="Digite sua senha"><br><br>
+                <a  class="has-text-grey is-underlined" href="reenviarsenha.php">Esqueci minha senha</a><br><br>
+                <input class="button is-link" type="submit" name="entrar" id="identrar" value="Entrar" style="color:white; width:100%; margin-bottom:20px;">
+            </form>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
